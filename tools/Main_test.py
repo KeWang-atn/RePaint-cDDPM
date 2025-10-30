@@ -211,9 +211,6 @@ def main():
         drag_cond = np.repeat(dim_d, num_samples, axis=0) #reapeat 512 
         ## print(cond.shape)
 
-        # dim_g = np.array([[ToD, BoL, DoL, Ct]])            # Condition Vector
-        # print('Condition: ',drag_cond.shape )
-
         # x_gt = torch.tensor(reference_design, dtype=torch.float32).to('cuda:0')
         x_gt = torch.tensor([4.96634266e-01  ,4.51955760e-01  , BoL,
         DoL,  5.71478128e-01,  1.43758851e-01,  1.31093639e-01,

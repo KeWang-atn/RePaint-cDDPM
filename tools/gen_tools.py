@@ -183,8 +183,7 @@ def design_generation(DDPM_Env, drag_cond, x_gt, keep_mask, Enable_mask,
     img_path = os.path.join(save_path,"image")
     os.makedirs(img_path, exist_ok=True)  
     file_name = os.path.join(img_path, f"{case_name}.png")
-    plt.savefig( file_name, bbox_inches='tight', dpi=300)  # 保存为 JPEG
-    plt.close("all")
+    plt.savefig( file_name, bbox_inches='tight', dpi=300)  
     '''
     ===================================================
     Result Collection and Output

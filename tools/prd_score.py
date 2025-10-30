@@ -304,7 +304,6 @@ def plot(precision_recall_pairs, labels=None, out_path=None,
     label = labels[i] if labels is not None else None
     
     if i == 0:
-      # ✅ 高亮第一条：更粗、更鲜艳
       plt.plot(recall, precision, label=label, color='crimson',
               linewidth=3, alpha=0.95)
     else:

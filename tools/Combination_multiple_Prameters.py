@@ -271,7 +271,7 @@ Enable_mask = 1     # Enable RePaint
 x_gt_unorm = x_gt
 x_gt =x_gt.cpu().numpy()
 x_gt = x = 2.0*(x_gt-T2.data_norm.X_LL_Scaled)/(T2.data_norm.X_UL_Scaled- T2.data_norm.X_LL_Scaled) - 1.0
-# x_gt = T2.data_norm.normalizer.transform(x)     #  transform_Data(self,X) in Guided_Cond_DDPM_Tools.py
+x_gt = T2.data_norm.normalizer.transform(x)     #  transform_Data(self,X) in Guided_Cond_DDPM_Tools.py
 x_gt = torch.from_numpy(x_gt.astype('float32')).to('cuda:0')
 
 '''

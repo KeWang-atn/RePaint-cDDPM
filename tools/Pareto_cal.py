@@ -19,7 +19,7 @@ def worker(args):
     return vol
 
 def pareto_front(X, Y, maximize_x=False, maximize_y=False):
-    """返回帕累托前沿的索引"""
+
     data = np.stack([X, Y], axis=1)
     is_efficient = np.ones(data.shape[0], dtype=bool)
     for i, c in enumerate(data):
@@ -156,13 +156,10 @@ def main():
                 pre_trained_vol .append(sample_vol)
                 pre_trained_lables.append(img_name[12:-4])
             print(f"Pareto front has {len(pareto_idx)} points.")
-            # ========== 绘图 ==========
             if save_img:
                 plt.figure(figsize=(8, 5))
                 plt.scatter(Ct, sample_vol, s=15, alpha=0.5, label='All samples')
                 plt.scatter(Ct[pareto_idx], sample_vol[pareto_idx], color='red', s=40, label='Pareto front')
-
-                # 将帕累托前沿点按 Ct 排序并连线
                 sorted_idx = np.argsort(Ct[pareto_idx])
                 plt.plot(Ct[pareto_idx][sorted_idx], sample_vol[pareto_idx][sorted_idx], color='red', linewidth=1.5)
 
@@ -188,7 +185,7 @@ def main():
                     Ct_record = [Ct_record[i] for i in select_indices]
                     vol_record = [vol_record[i] for i in select_indices]
                 if group:
-                    unique_labels = list(dict.fromkeys(lables))  # 保留顺序
+                    unique_labels = list(dict.fromkeys(lables))  
                     colors_map = plt.cm.turbo(np.linspace(0, 1, len(unique_labels)))
                     label_color_dict = {lab: col for lab, col in zip(unique_labels, colors_map)}
                     colors = np.array([label_color_dict[lab] for lab in lables])
@@ -202,7 +199,7 @@ def main():
                             lables_unique.append(None)
                     lables = lables_unique
 
-            N = len(pareto_lines)  # 数据组数
+            N = len(pareto_lines) 
             # print(f"N: {N}")
             # colors = plt.cm.turbo(np.linspace(0, 1, N))
             colors = plt.cm.tab10(np.linspace(0, 1, N)) 
