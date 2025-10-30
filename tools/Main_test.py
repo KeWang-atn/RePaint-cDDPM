@@ -249,7 +249,8 @@ def main():
 
         # normalization value of reference design values:
         x_gt = x = 2.0*(x_gt-T2.data_norm.X_LL_Scaled)/(T2.data_norm.X_UL_Scaled- T2.data_norm.X_LL_Scaled) - 1.0
-        print('x_gt',x_gt)
+        x_gt = T2.data_norm.normalizer.transform(x)
+        # print('x_gt',x_gt)
         x_gt = x_gt.to(torch.float32).to('cuda:0')
 
         '''
